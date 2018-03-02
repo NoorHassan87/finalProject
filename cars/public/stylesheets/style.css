@@ -1,0 +1,38 @@
+body {
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+.bgImg{
+  background-image: url('https://www.dodge.com/content/dam/fca-brands/na/dodge/en_us/2017/charger/performance/desktop/2017-dodge-charger-performance-hero.jpg.image.1440.jpg');
+  height:600px;
+  width: -moz-available;
+}
+.jumbotron {
+  background: rgba(100, 50, 50, 0.3);
+}
+.fontColor{
+  color: cornsilk;
+  font-family: Cambria;
+}
+.rowHeight{
+  max-height: fit-content ;
+}
+.floatLeft{
+    float: left;
+}
+.bodyBg{
+    background-color: #b2bec3;
+}
+.imgHeight{
+    height: 300px;
+}
+.textLocation{
+    text-align: center;
+    margin-bottom: -4px;
+}

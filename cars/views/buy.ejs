@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+    <title>Hello, world!</title>
+</head>
+<body class="bg-light">
+<div id="root">
+    <!--NavBar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/car">
+            <img src="http://www.car-brand-names.com/wp-content/uploads/2015/09/Dodge-logo.png" width="150" height="45"
+                 alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+                <button @click="openAddModal" type="button" class="btn btn-primary btn-sm floatLeft">Buying A Car
+                </button>
+            </ul>
+        </div>
+    </nav>
+    <!--Table-->
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-10 col-12">
+                <table class="table">
+                    <thead>
+                    <tr class="bg-dark fontColor">
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Speed</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Seating</th>
+                        <th scope="col">Cars available</th>
+                        <th scope="col">Model</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(car,index) in cars" class="table-secondary">
+                        <th scope="row">{{index+1}}</th>
+                        <td>{{car.name}}</td>
+                        <td>{{car.speed+' HorsePower'}}</td>
+                        <td>{{car.price+' $'}}</td>
+                        <td>{{car.seatingNo}}</td>
+                        <td>{{car.carsAvailable}}</td>
+                        <td>{{car.model}}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Car</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Car Name</label>
+                        <input v-model="newCar.name" type="text" class="form-control" placeholder="Enter car name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Price</label>
+                        <input v-model="newCar.price" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Speed</label>
+                        <input v-model="newCar.speed" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Image</label>
+                        <input v-model="newCar.img" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Seating Number</label>
+                        <input v-model="newCar.seatingNo" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Cars Available</label>
+                        <input v-model="newCar.carsAvailable" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Model</label>
+                        <input v-model="newCar.model" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button @click="addCar" type="button" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    function getCar() {
+        axios.get('/api/car').then(function (response) {
+            app.cars = response.data
+        })
+    }
+
+    var app = new Vue({
+        el: '#root',
+        data: {
+            cars: [],
+            newCar: {
+                name: '',
+                img: '',
+                price: '',
+                speed: '',
+                seatingNo: '',
+                carsAvailable: '',
+                model: ''
+            }
+        },
+        methods: {
+            openAddModal: function () {
+                $('#addModal').modal('show')
+            },
+            addCar: function () {
+                axios.post('/api/car', {car: app.newCar}).then(function (response) {
+                    if (response.data.isSuccess) {
+                        getCar()
+                        $('#addModal').modal('hide')
+                    }
+                }).catch(function (error) {
+                    alert(error)
+                })
+            },
+        },
+        mounted: function () {
+             getCar()
+        }
+    })
+</script>
+</body>
+</html>
